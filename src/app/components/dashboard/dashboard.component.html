@@ -1,0 +1,30 @@
+<div class="wrap-dashboard">
+    <div class="item icon">
+        <img [src]="userDetails?.photoUrl" />
+    </div>
+    <div class="item name">
+        <span class="bold">Name: </span>
+        <span>{{userDetails?.name}}</span>
+    </div>
+    <div class="item email">
+        <span class="bold">Email: </span>
+        <span>{{userDetails?.email}}</span>
+    </div>
+    <div class="item id">
+        <span class="bold">ID: </span>
+        <span>{{userDetails?.id}}</span>
+    </div>
+    <div class="item provider">
+        <span class="bold">Provider: </span>
+        <span>{{userDetails?.provider}}</span>
+    </div>
+    <div class="item id_token">
+        <span class="bold">id_token: </span>
+        <span>{{userDetails?.idToken}}</span>
+    </div>
+    <div class="item auth_token">
+        <span class="bold">auth_token: </span>
+        <span>{{userDetails?.authToken}}</span>
+    </div>
+    <div class="sign-out-btn" (click)="signOut()">Sign Out</div>
+</div>

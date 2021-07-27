@@ -1,0 +1,32 @@
+.wrap-dashboard {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon {
+  text-align: center;
+  margin-bottom:20px;
+}
+.icon img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.sign-out-btn {
+  display: block;
+  color: #fff;
+  background: #e02424;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+}
+
+.item {
+    margin-top:5px;
+}

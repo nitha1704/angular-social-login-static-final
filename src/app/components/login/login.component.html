@@ -1,0 +1,50 @@
+<div *ngIf="isTooltipsBoxShow" class="tooltips-box"
+[ngClass]="isSubmitComplete ? 'valid' : 'invalid' "
+>
+{{tooltipsBoxMsg}}
+</div>
+<div class="wrap-form">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label id="name">Email</label>
+            <input type="text" name="email" formControlName="email" />
+            <small *ngIf="userForm.get('email').invalid && userForm.get('email').touched">Please provide a valid email address.</small>
+        </div>
+        <div class="wrap-content">
+            <div class="remember-box">
+                <input type="checkbox" id="remember" />
+                <label for="remember" class="bold">Remember Me</label>
+            </div>
+            <div class="forgot-password">
+                <a href="javascript:;">Forgot your password?</a>
+            </div>
+        </div>
+        <button class="sign-in-btn" (click)="handleSubmit()">Sign In</button>
+    </form>
+</div>
+
+<div class="register">
+    <p>Don't have an account yet? 
+        <a href="javascript:;">Register now</a>
+    </p>
+</div>
+
+<div class="wrap-social-login">
+    <h4>Sign in with</h4>
+    <div class="wrap">
+        <div class="social-icon google" (click)="signInWithGoogle()">
+            <div class="wrap-icon">
+                <img
+                    src="https://gitlab.com/assets/auth_buttons/google_64-9ab7462cd2115e11f80171018d8c39bd493fc375e83202fbb6d37a487ad01908.png" />
+                <span class="social-name">Google</span>
+            </div>
+        </div>
+        <div class="social-icon facebook" (click)="signInWithFacebook()">
+            <div class="wrap-icon">
+                <img
+                    src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" />
+                <span class="social-name">Facebook</span>
+            </div>
+        </div>
+    </div>
+</div>
