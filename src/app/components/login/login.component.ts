@@ -74,6 +74,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirectPage() {
-    window.location.href = this.targetUrl;
+    //window.location.href = this.targetUrl;
   }
 }
