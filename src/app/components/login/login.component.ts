@@ -39,8 +39,12 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
       //localStorage.setItem('google_auth', JSON.stringify(data));
-      localStorage.setItem('userId', JSON.stringify(data.authToken));
-      localStorage.setItem('authMode', JSON.stringify(data.provider));
+
+      const providerLowerCase = data.provider.toLowerCase();
+      console.log(providerLowerCase);
+
+      localStorage.setItem('userId', data.authToken);
+      localStorage.setItem('authMode', providerLowerCase);
       this.redirectPage();
     });
   }
@@ -48,8 +52,12 @@ export class LoginComponent implements OnInit {
   signInWithFacebook(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
       //localStorage.setItem('facebook_auth', JSON.stringify(data));
-      localStorage.setItem('userId', JSON.stringify(data.authToken));
-      localStorage.setItem('authMode', JSON.stringify(data.provider));
+
+      const providerLowerCase = data.provider.toLowerCase();
+      console.log(providerLowerCase);
+
+      localStorage.setItem('userId', data.authToken);
+      localStorage.setItem('authMode', providerLowerCase);
       this.redirectPage();
     });
   }
@@ -63,7 +71,6 @@ export class LoginComponent implements OnInit {
     } else if (this.userForm.status === 'VALID') {
       localStorage.setItem('userId', this.userForm.value.email);
       localStorage.setItem('authMode', 'anomynous');
-      
 
       this.isTooltipsBoxShow = true;
       this.isSubmitComplete = true;
