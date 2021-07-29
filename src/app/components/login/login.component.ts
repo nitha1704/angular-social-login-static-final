@@ -19,8 +19,16 @@ export class LoginComponent implements OnInit {
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
   targetUrl: string = 'https://twnz.dev/game/index.html';
+  isUserStorage: boolean = false;
 
-  constructor(private router: Router, private authService: SocialAuthService) {}
+  constructor(private router: Router, private authService: SocialAuthService) {
+    // Local Storage
+    const userIdStorage = localStorage.getItem('userId');
+    if (userIdStorage) {
+      this.isUserStorage = true;
+      this.redirectPage();
+    }    
+  }
 
   ngOnInit(): void {
     // Form
@@ -28,17 +36,12 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
 
-    // Local Storage
-    const userIdStorage = localStorage.getItem('userId');
-    if (userIdStorage) {
-      this.redirectPage();
-    }
   }
 
   // Method
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
-      localStorage.setItem('google_auth', JSON.stringify(data));
+      //localStorage.setItem('google_auth', JSON.stringify(data));
 
       const providerLowerCase = data.provider.toLowerCase();
 
@@ -51,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   signInWithFacebook(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
-      localStorage.setItem('facebook_auth', JSON.stringify(data));
+      //localStorage.setItem('facebook_auth', JSON.stringify(data));
 
       const providerLowerCase = data.provider.toLowerCase();
 
@@ -71,7 +74,7 @@ export class LoginComponent implements OnInit {
     } else if (this.userForm.status === 'VALID') {
       localStorage.setItem('userId', this.userForm.value.email);
       localStorage.setItem('userEmail', this.userForm.value.email);
-      localStorage.setItem('authMode', 'anomynous');
+      localStorage.setItem('authMode', 'anonymous');
 
       this.isTooltipsBoxShow = true;
       this.isSubmitComplete = true;

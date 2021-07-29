@@ -6,19 +6,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { GoogleDashboardComponent } from './components/google-dashboard/google-dashboard.component';
-import { FacebookDashboardComponent } from './components/facebook-dashboard/facebook-dashboard.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AboutComponent,
-    ContactComponent,
-    GoogleDashboardComponent,
-    FacebookDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
