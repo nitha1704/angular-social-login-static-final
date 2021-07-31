@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   // Method
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
-      //localStorage.setItem('google_auth', JSON.stringify(data));
+      localStorage.setItem('google_auth', JSON.stringify(data));
 
       const providerLowerCase = data.provider.toLowerCase();
 
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   signInWithFacebook(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
-      //localStorage.setItem('facebook_auth', JSON.stringify(data));
+      localStorage.setItem('facebook_auth', JSON.stringify(data));
 
       const providerLowerCase = data.provider.toLowerCase();
 
