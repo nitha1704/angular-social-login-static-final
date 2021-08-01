@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
 
-    console.log('currentTime: ', this.currentTime);
+    //console.log('currentTime: ', this.currentTime);
     this.isTokenExpired();
   }
 
@@ -107,6 +107,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirectPage() {
-    //window.location.href = this.targetUrl;
+    window.location.href = this.targetUrl;
   }
 }
