@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialAuthService,
+  SocialUser,
 } from 'angularx-social-login';
 
 @Component({
@@ -18,17 +18,14 @@ export class LoginComponent implements OnInit {
   isSubmitComplete: boolean = false;
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
+  mainUrl: string = 'https://angular-social-login-static-final.netlify.app';
   targetUrl: string = 'https://twnz.dev/game/index.html';
   isUserStorage: boolean = false;
 
-  constructor(private router: Router, private authService: SocialAuthService) {
-    // Local Storage
-    const userIdStorage = localStorage.getItem('userId');
-    if (userIdStorage) {
-      this.isUserStorage = true;
-      this.redirectPage();
-    }    
-  }
+  currentTime: any = new Date().getTime();
+  expiredTime: any = this.currentTime + (60 * 1000);
+
+  constructor(private router: Router, private authService: SocialAuthService) {}
 
   ngOnInit(): void {
     // Form
@@ -36,6 +33,8 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
 
+    console.log('currentTime: ', this.currentTime);
+    this.isTokenExpired();
   }
 
   // Method
@@ -48,6 +47,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userId', data.authToken);
       localStorage.setItem('userEmail', data.email);
       localStorage.setItem('authMode', providerLowerCase);
+      localStorage.setItem('expired_in', this.expiredTime);
       this.redirectPage();
     });
   }
@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userId', data.authToken);
       localStorage.setItem('userEmail', data.email);
       localStorage.setItem('authMode', providerLowerCase);
+      localStorage.setItem('expired_in', this.expiredTime);
       this.redirectPage();
     });
   }
@@ -81,6 +82,27 @@ export class LoginComponent implements OnInit {
       this.tooltipsBoxMsg = 'Successfully login!';
       this.userForm.reset();
       this.redirectPage();
+    }
+  }
+
+  handleSignOut(): void {
+    localStorage.clear();
+    this.authService.signOut();
+    window.location.href = this.mainUrl;
+  }
+
+  isTokenExpired(): any {
+    const getExpiredTime: any = localStorage.getItem('expired_in');
+    if (this.currentTime > parseInt(getExpiredTime)) {
+      localStorage.clear();
+      this.authService.signOut();
+    } else {
+      // Local Storage
+      const userIdStorage = localStorage.getItem('userId');
+      if (userIdStorage) {
+        this.isUserStorage = true;
+        this.redirectPage();
+      }
     }
   }
 
