@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userEmail', data.email);
       localStorage.setItem('authMode', providerLowerCase);
       localStorage.setItem('expired_in', this.expiredTime);
+      this.showSuccessLoginMsg();
       this.redirectPage();
     });
   }
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userEmail', data.email);
       localStorage.setItem('authMode', providerLowerCase);
       localStorage.setItem('expired_in', this.expiredTime);
+      this.showSuccessLoginMsg();
       this.redirectPage();
     });
   }
@@ -78,19 +80,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userEmail', this.userForm.value.email);
       localStorage.setItem('authMode', 'anonymous');
 
-      this.isTooltipsBoxShow = true;
-      this.isSubmitComplete = true;
-      this.tooltipsBoxMsg = 'Successfully login!';
+      this.showSuccessLoginMsg();
       this.userForm.reset();
       this.redirectPage();
     }
   }
-
-  // handleSignOut(): void {
-  //   localStorage.clear();
-  //   this.authService.signOut();
-  //   window.location.href = this.mainUrl;
-  // }
 
   isTokenExpired(): any {
     const getExpiredTime: any = localStorage.getItem('expired_in');
@@ -107,6 +101,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  showSuccessLoginMsg() {
+    this.isTooltipsBoxShow = true;
+    this.isSubmitComplete = true;
+    this.tooltipsBoxMsg = 'Successfully login!';
+  }
   redirectPage() {
     window.location.href = this.targetUrl;
   }

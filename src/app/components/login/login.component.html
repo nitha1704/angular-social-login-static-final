@@ -10,24 +10,9 @@
                 <small *ngIf="userForm.get('email').invalid && userForm.get('email').touched">Please provide a valid
                     email address.</small>
             </div>
-            <!-- <div class="wrap-content">
-            <div class="remember-box">
-                <input type="checkbox" id="remember" />
-                <label for="remember" class="bold">Remember Me</label>
-            </div>
-            <div class="forgot-password">
-                <a href="javascript:;">Forgot your password?</a>
-            </div>
-        </div> -->
             <button class="sign-in-btn" (click)="handleSubmit()">Sign In</button>
         </form>
     </div>
-
-    <!-- <div class="register">
-    <p>Don't have an account yet? 
-        <a href="javascript:;">Register now</a>
-    </p>
-</div> -->
 
     <div class="wrap-social-login">
         <h4>Sign in with</h4>
@@ -49,5 +34,3 @@
         </div>
     </div>
 </section>
-
-<!-- <button (click)="handleSignOut()">Sign Out</button> -->
