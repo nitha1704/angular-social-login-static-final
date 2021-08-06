@@ -18,12 +18,15 @@ export class LoginComponent implements OnInit {
   isSubmitComplete: boolean = false;
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
-  mainUrl: string = 'https://angular-social-login-static-final.netlify.app';
-  targetUrl: string = 'https://twnz.dev/game/index.html';
   isUserStorage: boolean = false;
 
+  // Target Url for redirect
+  targetUrl: string = 'https://twnz.dev/game/index.html';
+
+  // Get Current Time
   currentTime: any = new Date().getTime();
-  expiredTime: any = this.currentTime + (60 * 1000);
+  // Get Current Time + 1 hour
+  expiredTime: any = this.currentTime + 60 * 1000;
 
   constructor(private router: Router, private authService: SocialAuthService) {}
 
@@ -32,8 +35,6 @@ export class LoginComponent implements OnInit {
     this.userForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     });
-
-    //console.log('currentTime: ', this.currentTime);
     this.isTokenExpired();
   }
 
@@ -85,11 +86,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleSignOut(): void {
-    localStorage.clear();
-    this.authService.signOut();
-    window.location.href = this.mainUrl;
-  }
+  // handleSignOut(): void {
+  //   localStorage.clear();
+  //   this.authService.signOut();
+  //   window.location.href = this.mainUrl;
+  // }
 
   isTokenExpired(): any {
     const getExpiredTime: any = localStorage.getItem('expired_in');
