@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   // Get Current Time
   currentTime: any = new Date().getTime();
   // Get Current Time + 1 hour
-  expiredTime: any = this.currentTime + 60 * 1000;
+  expiredTime: any = this.currentTime + 3600 * 1000;
 
   constructor(private router: Router, private authService: SocialAuthService) {}
 
@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
     this.isTokenExpired();
+
+    console.log('currentTime: ', this.currentTime);
+    console.log('expiredTime: ', localStorage.getItem('expired_in'));
   }
 
   // Method
