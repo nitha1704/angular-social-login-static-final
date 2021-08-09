@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
     });
     this.isTokenExpired();
 
-    console.log('currentTime: ', this.currentTime);
-    console.log('expiredTime: ', localStorage.getItem('expired_in'));
+    // console.log('currentTime: ', this.currentTime);
+    // console.log('expiredTime: ', localStorage.getItem('expired_in'));
   }
 
   // Method
