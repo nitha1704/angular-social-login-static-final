@@ -5,7 +5,7 @@ h4 {
   margin-top: 10px;
 }
 .wrap-form {
-  border: 1px solid black;
+  border: 1.5px solid black;
   padding: 10px;
   border-radius: 5px;
 }
@@ -19,10 +19,19 @@ input[type="text"] {
   outline: none;
 }
 
-input[type="text"]:focus {
+label#name {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 15%);
 }
 small {
   color: red;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff,
+    0 0 3px #fff, 0 0 3px #fff, 0 0 1px #fff, 0 0 3px #fff, 0 0 3px #fff;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 14px;
 }
 .sign-in-btn {
   display: block;
@@ -41,13 +50,16 @@ small {
   background: #363636;
 }
 .wrap-social-login {
-  border: 1px solid black;
+  border: 1.5px solid black;
   padding: 10px;
   border-radius: 5px;
-  margin-top:15px;
+  margin-top: 15px;
 }
 .wrap-social-login h4 {
-  font-size: 21px;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 15%);
 }
 .wrap-social-login .wrap {
   display: grid;
@@ -60,13 +72,14 @@ small {
 .social-icon {
   display: inline-block;
   border: 1px solid black;
+  background-color: black;
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
 }
 .social-icon:hover {
-  background: lightgray;
+  background: #363636;
 }
 
 .social-icon .wrap-icon {
@@ -80,7 +93,9 @@ small {
   height: 20px;
   border-radius: 50%;
 }
-
+.social-name {
+  color: white;
+}
 .wrap-content {
   display: flex;
   justify-content: space-between;
@@ -138,4 +153,21 @@ input.ng-touched.ng-valid {
 }
 .tooltips-box.invalid {
   background: red;
+}
+
+/* Event Showtime */
+.event-showtime {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.event-showtime span {
+  background: red;
+  padding: 5px 30px;
+  color: white;
+  margin-top: 25px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 15px;
 }

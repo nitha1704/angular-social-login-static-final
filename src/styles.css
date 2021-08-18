@@ -3,7 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body {
+  background: url(./assets/images/LOGIN_PAGE_.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 p,
 h1,
 h2,
@@ -27,5 +31,10 @@ a:focus {
 
 .more-info {
   text-align: center;
-  margin:10px 0;
+  margin: 10px 0;
+}
+
+.inner {
+  width: 95%;
+  margin:0 auto;
 }
