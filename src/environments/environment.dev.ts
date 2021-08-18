@@ -1,5 +1,4 @@
 export const environment = {
   production: false,
-  qwesUrl: 'https://developer.com',
-  envName: 'dev'
+  targetUrlEnv: 'https://twnz.dev/game/index.html',
 };

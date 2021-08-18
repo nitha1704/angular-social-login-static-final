@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  qwesUrl: 'https://production.com',
-  envName: 'prod',
+  targetUrlEnv: 'https://motionjam2021.momu.co/game/',
 };
