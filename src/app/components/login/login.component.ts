@@ -7,6 +7,7 @@ import {
   SocialAuthService,
   SocialUser,
 } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
   isUserStorage: boolean = false;
+
+  testUrl: string = environment.qwesUrl;
 
   // Target Url for redirect
   targetUrl: string = 'https://twnz.dev/game/index.html';

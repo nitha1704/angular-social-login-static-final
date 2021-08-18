@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  qwesUrl: 'https://production.com',
+  envName: 'prod',
 };
