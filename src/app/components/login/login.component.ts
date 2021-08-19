@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   isSubmitComplete: boolean = false;
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
+  checkIsUserStorage2: boolean = false;
+
 
   // Target Url for redirect
   targetUrl: string = environment.targetUrlEnv;
@@ -31,11 +33,15 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: SocialAuthService, private globalService: GlobalService) {}
 
   ngOnInit(): void {
+     this.globalService
+       .checkUserStorage()
+       .subscribe((value) => (this.checkIsUserStorage2 = value));
     // Form
     this.userForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     });
     this.isTokenExpired();
+   
 
     // console.log('currentTime: ', this.currentTime);
     // console.log('expiredTime: ', localStorage.getItem('expired_in'));

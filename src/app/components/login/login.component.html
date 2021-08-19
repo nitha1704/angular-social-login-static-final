@@ -1,4 +1,4 @@
-<section class="login-section">
+<section class="login-section" *ngIf="!checkIsUserStorage2">
     <div *ngIf="isTooltipsBoxShow" class="tooltips-box" [ngClass]="isSubmitComplete ? 'valid' : 'invalid' ">
         {{tooltipsBoxMsg}}
     </div>
