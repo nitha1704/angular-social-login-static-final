@@ -1,5 +1,7 @@
-<div id="app">
-  <div class="wrap-app">
-    <router-outlet></router-outlet>
+<div id="app" *ngIf="!checkIsUserStorage">
+  <div class="inner">
+    <div class="wrap-app">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

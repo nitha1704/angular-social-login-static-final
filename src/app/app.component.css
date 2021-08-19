@@ -1,15 +1,9 @@
 #app {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  min-height: 100vh;
-  width: 95%;
-  margin: 0 auto;
+  background: url(../assets/images/LOGIN_PAGE_.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .wrap-app {
-  /* border: 1px solid black;
-  padding: 10px;
-  border-radius: 5px; */
   position: relative;
   bottom: 30px;
   width: 450px;

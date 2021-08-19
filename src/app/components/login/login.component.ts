@@ -8,7 +8,7 @@ import {
   SocialUser,
 } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
-
+import {GlobalService} from '../../service/global.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   isSubmitComplete: boolean = false;
   isTooltipsBoxShow: boolean = false;
   tooltipsBoxMsg: string = '';
-  isUserStorage: boolean = false;
 
   // Target Url for redirect
   targetUrl: string = environment.targetUrlEnv;
@@ -29,7 +28,7 @@ export class LoginComponent implements OnInit {
   // Get Current Time + 1 hour
   expiredTime: any = this.currentTime + 3600 * 1000;
 
-  constructor(private router: Router, private authService: SocialAuthService) {}
+  constructor(private router: Router, private authService: SocialAuthService, private globalService: GlobalService) {}
 
   ngOnInit(): void {
     // Form
@@ -99,7 +98,7 @@ export class LoginComponent implements OnInit {
       // Local Storage
       const userIdStorage = localStorage.getItem('userId');
       if (userIdStorage) {
-        this.isUserStorage = true;
+        this.globalService.isUserStorage.next(true);
         this.redirectPage();
       }
     }
