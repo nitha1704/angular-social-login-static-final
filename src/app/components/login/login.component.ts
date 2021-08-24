@@ -132,6 +132,12 @@ export class LoginComponent implements OnInit {
         'iPad',
         'iPhone',
         'iPod',
+        'MacIntel',
+        'MacPPC',
+        'Mac68K',
+        'Macintosh',
+        'Pike v7.6 release 92',
+        'Pike v7.8 release 517'
       ].includes(navigator.platform) ||
       // iPad on iOS 13 detection
       (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
