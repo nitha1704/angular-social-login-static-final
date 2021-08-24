@@ -8,7 +8,7 @@ import {
   SocialUser,
 } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
-import {GlobalService} from '../../service/global.service'
+import { GlobalService } from '../../service/global.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,30 +21,30 @@ export class LoginComponent implements OnInit {
   tooltipsBoxMsg: string = '';
   checkIsUserStorage2: boolean = false;
 
-
   // Target Url for redirect
-  targetUrl: string = environment.targetUrlEnv;
+  targetUrlWindows: string = environment.targetUrlWindows;
+  targetUrlIOS: string = environment.targetUrlIOS;
 
   // Get Current Time
   currentTime: any = new Date().getTime();
   // Get Current Time + 1 hour
   expiredTime: any = this.currentTime + 3600 * 1000;
 
-  constructor(private router: Router, private authService: SocialAuthService, private globalService: GlobalService) {}
+  constructor(
+    private router: Router,
+    private authService: SocialAuthService,
+    private globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
-     this.globalService
-       .checkUserStorage()
-       .subscribe((value) => (this.checkIsUserStorage2 = value));
+    this.globalService
+      .checkUserStorage()
+      .subscribe((value) => (this.checkIsUserStorage2 = value));
     // Form
     this.userForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     });
     this.isTokenExpired();
-   
-
-    // console.log('currentTime: ', this.currentTime);
-    // console.log('expiredTime: ', localStorage.getItem('expired_in'));
   }
 
   // Method
@@ -116,6 +116,25 @@ export class LoginComponent implements OnInit {
     this.tooltipsBoxMsg = 'Successfully login!';
   }
   redirectPage() {
-    window.location.href = this.targetUrl;
+    if (this.isDeviceIOS()) {
+      window.location.href = this.targetUrlIOS;
+    } else {
+      window.location.href = this.targetUrlWindows;
+    }  
+  }
+
+  isDeviceIOS() {
+    return (
+      [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod',
+      ].includes(navigator.platform) ||
+      // iPad on iOS 13 detection
+      (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+    );
   }
 }
